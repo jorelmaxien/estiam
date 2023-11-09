@@ -52,10 +52,12 @@ trouver_solutions <- function(x, y) {
 }
 
 # Utilisation de la fonction avec le nombre de lignes (x) et de colonnes (y) de votre choix
-resultats <- trouver_solutions(-8, -8)  # Par exemple, 8 lignes et 8 colonnes
+x<- 10
+y<- 10
+resultats <- trouver_solutions(x, y)  # Par exemple, 8 lignes et 8 colonnes
 
 # Création d'une heatmap avec ggplot2 (utiliser les résultats obtenus)
-heatmap_data <- matrix(0, nrow = 8, ncol = 8)
+heatmap_data <- matrix(0, nrow = x, ncol = y)
 i <- 1
 while (i <= length(resultats)) {
   positions <- resultats[[i]]
