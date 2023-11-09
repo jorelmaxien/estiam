@@ -35,15 +35,24 @@ trouver_solutions <- function(x, y) {
     }
   }
   
-  placement_initial <- integer(x)
-  placer_dames(placement_initial)
+  if(x > 0 & y > 0){
+    placement_initial <- integer(x)
+    placer_dames(placement_initial)
+    
+    a <- 1
+    while (a <= length(all_solutions)) {
+      cat("Solution", a, ": ", paste(all_solutions[[a]]-1, collapse = " "), "\n")
+      a <- a + 1
+    }
+  }
+  
   
   cat("Nombre de solutions trouvées:", solutions, "\n")
   return(all_solutions)
 }
 
 # Utilisation de la fonction avec le nombre de lignes (x) et de colonnes (y) de votre choix
-resultats <- trouver_solutions(8, 8)  # Par exemple, 8 lignes et 8 colonnes
+resultats <- trouver_solutions(-8, -8)  # Par exemple, 8 lignes et 8 colonnes
 
 # Création d'une heatmap avec ggplot2 (utiliser les résultats obtenus)
 heatmap_data <- matrix(0, nrow = 8, ncol = 8)
