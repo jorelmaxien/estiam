@@ -47,12 +47,15 @@ resultats <- trouver_solutions(8, 8)  # Par exemple, 8 lignes et 8 colonnes
 
 # Création d'une heatmap avec ggplot2 (utiliser les résultats obtenus)
 heatmap_data <- matrix(0, nrow = 8, ncol = 8)
-
-for (i in 1:length(resultats)) {
+i <- 1
+while (i <= length(resultats)) {
   positions <- resultats[[i]]
-  for (j in 1:length(positions)) {
+  j <- 1
+  while (j <= length(positions)) {
     heatmap_data[j, positions[j]] <- heatmap_data[j, positions[j]] + 1
+    j <- j + 1
   }
+  i <- i + 1
 }
 
 heatmap_data_melted <- melt(heatmap_data)
@@ -63,3 +66,4 @@ ggplot(heatmap_data_melted, aes(x = Var2, y = Var1, fill = value)) +
   labs(title = "Heatmap des cases les plus touchées par les dames",
        x = "Colonnes",
        y = "Lignes")
+
